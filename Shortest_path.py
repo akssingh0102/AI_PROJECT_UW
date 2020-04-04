@@ -24,3 +24,10 @@ class Graph():
                 min_index = v 
   
         return min_index 
+      def dijkstra(self, src): 
+  
+        dist = [sys.maxint] * self.V 
+        dist[src] = 0
+        sptSet = [False] * self.V 
+  
+        for cout in range(self.V): 
