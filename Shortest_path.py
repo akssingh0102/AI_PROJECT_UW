@@ -11,3 +11,16 @@ class Graph():
         print "Vertex tDistance from Source"
         for node in range(self.V): 
             print node, "t", dist[node] 
+    def minDistance(self, dist, sptSet): 
+  
+        # Initilaize minimum distance for next node 
+        min = sys.maxint 
+  
+        # Search not nearest vertex not in the  
+        # shortest path tree 
+        for v in range(self.V): 
+            if dist[v] < min and sptSet[v] == False: 
+                min = dist[v] 
+                min_index = v 
+  
+        return min_index 
