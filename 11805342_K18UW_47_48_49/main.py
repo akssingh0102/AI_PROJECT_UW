@@ -94,4 +94,27 @@ while getWalls:
                 pass
     pygame.display.flip()
 
+# Start a thread of the algorithm user selected
+if algorithm == "BFS":
+    t1 = threading.Thread(target=myMatrix.bfs())
+elif algorithm == "DFS":
+    t1 = threading.Thread(target=myMatrix.dfs())
+elif algorithm == "A-Star":
+    t1 = threading.Thread(target=myMatrix.a_star())
 
+t1.start()
+
+# Color in cells from the search algorithm and wait for quitgame
+while 1:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            sys.exit()
+
+    if not gridQ.empty():
+        x, y, clr = gridQ.get()
+
+        myGrid.fillSquare(x, y, clr)
+        pygame.display.update()
+
+
+# main()
